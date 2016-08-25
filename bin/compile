@@ -49,11 +49,16 @@ echo "Listing Environment - modified by Ben C:"
 
 pwd
 # Install NodeJS
+cat > "$BUILD_DIR/install_node.sh" <<EOF
+#!/bin/bash
 cd /home/vcap/app
 wget --no-check-certificate https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.gz
 tar xf node-v6.4.0-linux-x64.tar.gz
 echo "Installed Node JS Version:"
 /home/vcap/app/node-v6.4.0-linux-x64/bin/node -v
+EOF
+chmod 755 "$BUILD_DIR/install_node.sh"
+
 
 echo "Who am i?"
 whoami
@@ -90,24 +95,19 @@ echo "Creating start script"
 cat > "$BUILD_DIR/start.sh" <<EOF
 #!/bin/bash
 #
+wget --no-check-certificate https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.gz
+tar xf node-v6.4.0-linux-x64.tar.gz
+echo "Installed Node JS Version:"
+/home/vcap/app/node-v6.4.0-linux-x64/bin/node -v
+
 # Start Python Web Server & SSH Reverse Tunnel
 #
-# Copy SSH keys if included with the app
-if [ -d "/home/vcap/app/.ssh" ]; then
-    echo "Copied SSH keys"
-    cp -R /home/vcap/app/.ssh /home/vcap/
-    # Start reverse SSH Tunnel
-    echo "Starting SSH Reverse Tunnel"
-    ssh -f -N -T -R 2222:localhost:\$VCAP_APP_PORT daniel@\$SSH_HOST
-fi
+
+
 # Start Python Server
 echo "Starting Web Server"
 python /home/vcap/app/boot.py /
 
-# Install Node
-echo "Installing Node.js"
-touch /var/tmp/test.txt
-wget --no-check-certificate https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.xz
 EOF
 chmod 755 "$BUILD_DIR/start.sh"
 
