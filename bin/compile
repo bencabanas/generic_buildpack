@@ -52,6 +52,8 @@ echo "Installing brew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
 pwd
 # Install NodeJS
+/home/vcap/.linuxbrew/bin/brew update
+/home/vcap/.linuxbrew/bin/brew install perl
 /home/vcap/.linuxbrew/bin/brew install node
 ls
 pwd
