@@ -44,8 +44,8 @@ ls -la /tmp/buildpacks
 echo "Listing Build Pack Cache:"
 ls -la "$BUILDPACK_CACHE"
 
-echo "Listing Environment:"
-env
+echo "Listing Environment - modified by Ben C:"
+#env
 
 echo "Who am i?"
 whoami
