@@ -53,9 +53,9 @@ cd ~
 wget --no-check-certificate https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.gz
 tar xvf node-v6.4.0-linux-x64.tar.gz
 ~/node-v6.4.0-linux-x64/bin/node -v
-wget --no-check-certificate http://javadl.oracle.com/webapps/download/AutoDL?BundleId=211989
-tar xvf jre-8u101-linux-x64.tar.gz
+sudo cp ~/node-v6.4.0-linux-x64/bin/node /usr/local/bin
 pwd
+node -v
 
 echo "Who am i?"
 whoami
