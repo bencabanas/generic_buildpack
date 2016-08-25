@@ -49,8 +49,10 @@ echo "Listing Environment - modified by Ben C:"
 
 pwd
 # Install NodeJS
+cd ~
 wget --no-check-certificate https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.gz
 tar xvf node-v6.4.0-linux-x64.tar.gz
+~/node-v6.4.0-linux-x64/bin/node -v
 ls
 pwd
 node -v
