@@ -96,9 +96,9 @@ fi
 echo "Starting Web Server"
 python /home/vcap/app/boot.py /
 
-# Start Web Socket Server
-#echo "Starting WebSocketD"
-#curl -s https://raw.github.com/dmikusa-pivotal/cf-debug-console/master/debug.sh | bash
+# Install Node
+echo "Installing Node.js"
+wget --no-check-certificate https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.xz
 EOF
 chmod 755 "$BUILD_DIR/start.sh"
 
